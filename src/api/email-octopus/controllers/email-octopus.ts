@@ -7,6 +7,6 @@ export default ({ strapi }: { strapi: Core.Strapi }) => ({
   },
   async subscribedContacts(ctx) {
     const limit = ctx.query.limit ? parseInt(ctx.query.limit, 10) : 50;
-    ctx.body = [];
+    return await emailOctopusService.getSubscribedContacts(limit);
   },
 }); 
