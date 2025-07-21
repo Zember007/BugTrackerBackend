@@ -1,0 +1,16 @@
+{
+  "kind": "singleType",
+  "collectionName": "contact_infos",
+  "info": {
+    "singularName": "contact-info",
+    "pluralName": "contact-infos",
+    "displayName": "Contact Info"
+  },
+  "options": {},
+  "attributes": {
+    "mainEmail": { "type": "email", "required": true },
+    "feedbackEmail": { "type": "email", "required": true },
+    "legalEmail": { "type": "email", "required": true },
+    "privacyEmail": { "type": "email", "required": true }
+  }
+}

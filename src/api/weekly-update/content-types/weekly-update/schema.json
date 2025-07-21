@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "weekly_updates",
+  "info": {
+    "singularName": "weekly-update",
+    "pluralName": "weekly-updates",
+    "displayName": "Weekly Update"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "week": {
+      "type": "integer",
+      "required": true
+    },
+    "date": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "statusWeek": {
+      "type": "enumeration",
+      "required": true,
+      "default": "current",
+      "enum": [
+        "current",
+        "completed"
+      ]
+    },
+    "achievements": {
+      "type": "json"
+    },
+    "challenges": {
+      "type": "json"
+    },
+    "nextWeek": {
+      "type": "json"
+    },
+    "signups": {
+      "type": "integer",
+      "required": false
+    },
+    "interviews": {
+      "type": "integer",
+      "required": false
+    },
+    "feedback": {
+      "type": "integer",
+      "required": false
+    },
+    "pageViews": {
+      "type": "string",
+      "required": false
+    }
+  }
+}

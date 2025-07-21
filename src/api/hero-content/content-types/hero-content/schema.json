@@ -1,0 +1,17 @@
+{
+  "kind": "singleType",
+  "collectionName": "hero_contents",
+  "info": {
+    "singularName": "hero-content",
+    "pluralName": "hero-contents",
+    "displayName": "Hero Content"
+  },
+  "options": {},
+  "attributes": {
+    "badge": { "type": "string", "required": true },
+    "mainTitle": { "type": "string", "required": true },
+    "subtitle": { "type": "text", "required": true },
+    "ctaText": { "type": "string", "required": true },
+    "socialProofText": { "type": "string", "required": true }
+  }
+}
