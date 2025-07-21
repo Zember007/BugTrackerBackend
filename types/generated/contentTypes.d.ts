@@ -404,33 +404,6 @@ export interface ApiContactInfoContactInfo extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiEmailOctopusEmailOctopus extends Struct.SingleTypeSchema {
-  collectionName: 'email_octopus';
-  info: {
-    displayName: 'Email Octopus';
-    pluralName: 'email-octopuses';
-    singularName: 'email-octopus';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::email-octopus.email-octopus'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiFaqItemFaqItem extends Struct.CollectionTypeSchema {
   collectionName: 'faq_items';
   info: {
@@ -1076,7 +1049,6 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::contact-info.contact-info': ApiContactInfoContactInfo;
-      'api::email-octopus.email-octopus': ApiEmailOctopusEmailOctopus;
       'api::faq-item.faq-item': ApiFaqItemFaqItem;
       'api::hero-content.hero-content': ApiHeroContentHeroContent;
       'api::metric.metric': ApiMetricMetric;

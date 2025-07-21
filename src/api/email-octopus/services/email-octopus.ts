@@ -12,27 +12,44 @@ const emailOctopusApi = axios.create({
   },
 });
 
-const getListInfo = async () => {
-  if (!EMAIL_OCTOPUS_API_KEY) return null;
-  const response = await emailOctopusApi.get(`/lists/${LIST_ID}`, {
-    params: { api_key: EMAIL_OCTOPUS_API_KEY },
-  });
-  return response.data.counts;
-};
+export default ({ strapi }) => ({
+  async getListInfo() {
+    if (!EMAIL_OCTOPUS_API_KEY) {
+      throw new Error('EMAIL_OCTOPUS_API_TOKEN is not configured');
+    }
+    
+    try {
+      const response = await emailOctopusApi.get(`/lists/${LIST_ID}`, {
+        params: { api_key: EMAIL_OCTOPUS_API_KEY },
+      });
+      return response.data.counts;
+    } catch (error) {
+      strapi.log.error('Error fetching list info:', error);
+      throw error;
+    }
+  },
 
-const getSubscribedContacts = async (limit = 50) => {
-  if (!EMAIL_OCTOPUS_API_KEY) return null;
-  const response = await emailOctopusApi.get(`/lists/${LIST_ID}/contacts`, {
-    params: { api_key: EMAIL_OCTOPUS_API_KEY, limit: Math.min(limit, 100) },
-  });
-  const subscribedContacts = response.data.data.filter(c => c.status === 'SUBSCRIBED');
-  return {
-    count: subscribedContacts.length,
-    contacts: subscribedContacts,
-  };
-};
-
-export default {
-  getListInfo,
-  getSubscribedContacts,
-}; 
+  async getSubscribedContacts(limit = 50) {
+    if (!EMAIL_OCTOPUS_API_KEY) {
+      throw new Error('EMAIL_OCTOPUS_API_TOKEN is not configured');
+    }
+    
+    try {
+      const response = await emailOctopusApi.get(`/lists/${LIST_ID}/contacts`, {
+        params: { 
+          api_key: EMAIL_OCTOPUS_API_KEY, 
+          limit: Math.min(limit, 100) 
+        },
+      });
+      
+      const subscribedContacts = response.data.data.filter(c => c.status === 'SUBSCRIBED');
+      return {
+        count: subscribedContacts.length,
+        contacts: subscribedContacts,
+      };
+    } catch (error) {
+      strapi.log.error('Error fetching subscribed contacts:', error);
+      throw error;
+    }
+  },
+}); 
