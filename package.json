@@ -24,12 +24,15 @@
     "react-router-dom": "^6.0.0",
     "styled-components": "^6.0.0"
   },
-  
   "devDependencies": {
+    "@swc/core": "^1.13.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "typescript": "^5"
+  },
+  "optionalDependencies": {
+    "@swc/core-linux-x64-gnu": "^1.13.1"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",
