@@ -1,0 +1,11 @@
+{
+  "kind": "singleType",
+  "collectionName": "email_octopus",
+  "info": {
+    "singularName": "email-octopus",
+    "pluralName": "email-octopuses",
+    "displayName": "Email Octopus"
+  },
+  "options": {},
+  "attributes": {}
+} 

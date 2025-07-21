@@ -1,0 +1,12 @@
+import type { Core } from '@strapi/strapi';
+import emailOctopusService from '../services/email-octopus';
+
+export default ({ strapi }: { strapi: Core.Strapi }) => ({
+  async listInfo(ctx) {
+    ctx.body = await emailOctopusService.getListInfo();
+  },
+  async subscribedContacts(ctx) {
+    const limit = ctx.query.limit ? parseInt(ctx.query.limit, 10) : 50;
+    ctx.body = await emailOctopusService.getSubscribedContacts(limit);
+  },
+}); 
