@@ -1,6 +1,15 @@
 import type { Core } from '@strapi/strapi';
 
 export default {
+  async testConnection(ctx) {
+    try {
+      const service = strapi.service('api::email-octopus.email-octopus');
+      ctx.body = await service.testConnection();
+    } catch (error) {
+      ctx.throw(500, error);
+    }
+  },
+
   async listInfo(ctx) {
     try {
       const service = strapi.service('api::email-octopus.email-octopus');
